@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+
+<div class="container">
+  <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+  <div>인기 검색어 목록
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>검색어</th>
+        <th>검색 횟수</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr th:each="item : ${popularList}">
+          <td th:text="${item.keyword}"></td>
+          <td th:text="${item.cnt}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div th:replace="fragments/footer :: footer"/>
+
+</div> <!-- /container -->
+
+</body>
+
+<script>
+</script>
+</html>

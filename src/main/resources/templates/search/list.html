@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+
+<div class="container">
+  <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+  <div>
+    <div>
+      <form th:object="${searchParam}" class="form-inline" action="/search/blog" method="get">
+        <div class="form-group mx-sm-1 mb-2" style="width: 200px; float: left;">
+          <select th:field="*{sort}" class="form-control">
+            <option th:value="accuracy">정확도순</option>
+            <option th:value="recency">최신순</option>
+          </select>
+        </div>
+        <div class="form-group mb-2" style="width: 200px; float: left;">
+          <input type="text" th:field="*{query}" class="form-control" placeholder="키워드 입력" />
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">검색</button>
+      </form>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>블로그이름</th>
+        <th>내용</th>
+        <th>일시</th>
+        <th>썸네일</th>
+        <th>제목</th>
+        <th>url</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="item : ${blogFormList}">
+        <td th:text="${item.blogName}"></td>
+        <td th:text="${item.contents}"></td>
+        <td th:text="${item.datetime}"></td>
+        <td th:text="${item.thumbnail}"></td>
+        <td th:text="${item.title}"></td>
+        <td th:text="${item.url}"></td>
+      </tr>
+
+      </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+      <form th:object="${searchParam}" id="pageFrm" method="get">
+        <input type="hidden" th:field="*{query}" class="form-control" />
+        <input type="hidden" id="searchParamPage" th:field="*{page}" />
+        <input type="hidden" th:field="*{sort}" />
+        <ul class="pagination" id="pagination">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item" th:each="page: ${#numbers.sequence(1, blogMeta.getTotalPage())}">
+            <a type="submit" class="page-link" th:href="@{/search/blogPaging(query=*{query}, sort=*{sort}, page=${page})}">
+              <span name="page" th:text="${page}"/>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </form>
+    </nav>
+  </div>
+  <div th:replace="fragments/footer :: footer"/>
+</div> <!-- /container -->
+</body>
+
+<script>
+  function chk_pageFrm(obj) {
+    console.log(obj)
+    $("#searchParamPage").text()
+    document.getElementById('pageFrm').submit();
+  }
+</script>
+</html>
