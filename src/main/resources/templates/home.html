@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+    <div class="jumbotron">
+        <p class="lead">블로그 검색</p>
+        <p>
+            <form action="/search/list" class="form-inline">
+                <button type="submit" class="btn btn-primary btn-lg">블로그 검색 목록</button>
+            </form>
+        </p>
+        <p class="lead">인기 검색어</p>
+        <p>
+            <a class="btn btn-primary btn-lg" href="/search/popular">인기 검색어 목록</a>
+        </p>
+    </div>
+
+    <div th:replace="fragments/footer :: footer" />
+
+</div> <!-- /container -->
+
+</body>
+</html>
