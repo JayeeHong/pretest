@@ -3,7 +3,6 @@ package com.jayee.pretest.repository;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 /**
  * Kakao 검색 API 파라미터

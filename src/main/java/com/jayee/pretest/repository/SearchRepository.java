@@ -1,6 +1,5 @@
 package com.jayee.pretest.repository;
 
-import com.jayee.pretest.controller.Popular;
 import com.jayee.pretest.domain.Keywords;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
@@ -25,9 +24,4 @@ public class SearchRepository {
     public List<Keywords> findAll() {
         return em.createQuery("select k from Keywords k", Keywords.class).getResultList();
     }
-//    public List<Keywords> findByKeyword(String keyword) {
-//        return em.createQuery("select k from Keywords k where k.keyword = :keyword", Keywords.class)
-//                .setParameter("keyword", keyword)
-//                .getResultList();
-//    }
 }
