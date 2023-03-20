@@ -85,7 +85,7 @@ public class SearchController {
         List<Popular> popularList = searchService.findKeywordsCount();
         model.addAttribute("popularList", popularList);
 
-        return "/search/popular";
+        return "search/popular";
     }
 
     private JSONObject getBlogJSONObj(KakaoSearch search) throws ParseException {
