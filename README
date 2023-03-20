@@ -1,0 +1,17 @@
++ jar 파일 저장 위치
+  - https://github.com/JayeeHong/pretest-jar
+  - 위 경로의 pretest-0.0.1-SNAPSHOT.jar 파일
+
+
++ h2 데이터베이스 저장장소 정보
+  - jdbc:h2:tcp://localhost/~/pretest
+  
++ 메인페이지 (localhost:8080/)
+  - 블로그 검색 이동 버튼과 인기 검색어 목록 이동 버튼으로 구성
+  
++ 블로그 검색 페이지 (localhost:8080/search/list)
+  - 정렬방식(sort), 검색어(query), 페이지(page)로 카카오 블로그 API 조회
+  - 검색 시 검색한 키워드 DB 저장
+  
++ 인기 검색어 목록 (localhost:8080/search/popular)
+  - 검색한 키워드와 검색한 횟수 표시
