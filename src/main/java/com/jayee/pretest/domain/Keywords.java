@@ -6,6 +6,9 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+/**
+ * 블로그 검색 시 검색한 키워드 저장 테이블
+ */
 @Entity
 @Table(name = "keywords")
 @Getter

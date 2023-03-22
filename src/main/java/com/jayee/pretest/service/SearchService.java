@@ -28,12 +28,22 @@ public class SearchService {
     private KakaoRestApiHelper kakaoRestApiHelper;
     private final SearchRepository searchRepository;
 
-    public ResponseEntity<String> searchBlogList(@ModelAttribute KakaoSearch searchParam) throws ParseException {
+    /**
+     * 블로그 API 조회
+     * @param searchParam 검색조건
+     * @return
+     * @throws ParseException
+     */
+    public ResponseEntity<String> searchBlogList(@ModelAttribute KakaoSearch searchParam) {
         ResponseEntity<String> response = kakaoRestApiHelper.getSearchBlog(searchParam);
 
         return response;
     }
 
+    /**
+     * 저장한 검색어 조회 후 각 검색어별 카운트한 목록 반환
+     * @return
+     */
     public List<Popular> findKeywordsCount() {
         List<Keywords> keywords = searchRepository.findAll();
         List<Popular> popularList = new ArrayList<>();
@@ -56,6 +66,10 @@ public class SearchService {
         return returnPopularList;
     }
 
+    /**
+     * 검색어 저장
+     * @param keyword 검색어
+     */
     @Transactional
     public void saveKeyword(Keywords keyword) {
         searchRepository.save(keyword);

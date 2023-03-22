@@ -6,6 +6,9 @@ import lombok.ToString;
 
 import java.time.LocalDateTime;
 
+/**
+ * 카카오 API 리턴값 : 블로그 글 정보
+ */
 @Getter
 @Setter
 @ToString

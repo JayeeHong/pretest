@@ -12,15 +12,18 @@ import java.util.List;
 public class SearchRepository {
     private final EntityManager em;
 
+    /**
+     * 검색한 키워드 저장
+     * @param keyword 검색어
+     */
     public void save(Keywords keyword) {
         em.persist(keyword);
     }
 
-    public List<Keywords> findKeywordsCount() {
-        return em.createQuery("select k.keyword, COUNT(k.keyword) from Keywords k group by k.keyword", Keywords.class)
-                .getResultList();
-    }
-
+    /**
+     * 검색한 키워드 목록 조회
+     * @return
+     */
     public List<Keywords> findAll() {
         return em.createQuery("select k from Keywords k", Keywords.class).getResultList();
     }
